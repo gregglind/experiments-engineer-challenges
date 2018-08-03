@@ -1,0 +1,19 @@
+{
+  "name": "code-testing",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "private": true,
+  "devDependencies": {
+    "mocha": "^5.2.0"
+  },
+  "dependencies": {
+    "eslint": "^5.2.0"
+  }
+}

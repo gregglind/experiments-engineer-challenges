@@ -1,0 +1,12 @@
+{
+  "name": "focus-noisy-tab",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo 'Read the README.md'"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
