@@ -2,7 +2,7 @@
 
 ## install
 
-`npm run install`
+`npm install`
 
 
 ## To solve this challenge.

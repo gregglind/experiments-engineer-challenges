@@ -2,7 +2,9 @@
 
 ## Once
 
-`npm install -g web-ext`
+1. Install a Firefox.
+
+2. `npm install -g web-ext`
 
 ## Once per testing session
 
@@ -18,7 +20,6 @@ web-ext run
 #### setup
 - Open tab:  `youtube.com`
 - Open new tab.
-- Click 'Focus Noisy Tab' button.
 
 #### action
 - click Focus Tab Button
