@@ -16,7 +16,7 @@
 function sumOfSquares(numbers) {
   let sum = 0;
   for (let x of numbers) {
-    if (typeof x !== "number") {
+    if (typeof x !== 'number') {
       return NaN;
     }
     sum += x * x;

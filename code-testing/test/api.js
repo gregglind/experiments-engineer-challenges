@@ -1,5 +1,5 @@
-// assert is like assert, but with some extra functions.
-const assert = require("assert");
+const { describe, it } = require('mocha');
+const assert = require('assert');
 const {
   sumOfSquares,
   openUrlsInOrder
@@ -8,25 +8,25 @@ const {
 
 // Part 1: sumOfSquares()
 describe('sumOfSquares()', () => {
-  it("is a function", () => {
+  it('is a function', () => {
     assert.equal(typeof sumOfSquares, 'function');
   });
 
-  it("returns 0 for the empty array", () => {
+  it('returns 0 for the empty array', () => {
     assert.equal(sumOfSquares([]), 0);
   });
 
-  it("computes the sum of squares of array values", () => {
+  it('computes the sum of squares of array values', () => {
     assert.equal(sumOfSquares([3,4]), 25);
     assert.equal(sumOfSquares([-3,-4]), 25);
   });
 
-  it("also works for sets", () => {
+  it('also works for sets', () => {
     assert.equal(sumOfSquares(new Set([12,5])), 169);
     assert.equal(sumOfSquares(new Set()), 0);
   });
 
-  it("and for generators, too", () => {
+  it('and for generators, too', () => {
     function* numbers() {
       yield 1;
       yield 2;
@@ -37,32 +37,32 @@ describe('sumOfSquares()', () => {
     assert.equal(sumOfSquares(empty()), 0);
   });
 
-  it("returns Infinity if any values are infinite", () => {
+  it('returns Infinity if any values are infinite', () => {
     assert.equal(sumOfSquares([1, Infinity, 2]), Infinity);
     assert.equal(sumOfSquares([1, -Infinity, 2]), Infinity);
   });
 
-  it("returns NaN for non-numeric values", () => {
+  it('returns NaN for non-numeric values', () => {
     assert(Number.isNaN(sumOfSquares([undefined])));
     assert(Number.isNaN(sumOfSquares([null])));
     assert(Number.isNaN(sumOfSquares([true])));
     assert(Number.isNaN(sumOfSquares([false])));
-    assert(Number.isNaN(sumOfSquares(["test"])));
-    assert(Number.isNaN(sumOfSquares(["1"])));
-    assert(Number.isNaN(sumOfSquares("123"))); // iterable string
-    assert(Number.isNaN(sumOfSquares([Symbol("1")])));
+    assert(Number.isNaN(sumOfSquares(['test'])));
+    assert(Number.isNaN(sumOfSquares(['1'])));
+    assert(Number.isNaN(sumOfSquares('123'))); // iterable string
+    assert(Number.isNaN(sumOfSquares([Symbol('1')])));
     assert(Number.isNaN(sumOfSquares([{}])));
     assert(Number.isNaN(sumOfSquares([[]])));
     assert(Number.isNaN(sumOfSquares([[1]])));
     assert(Number.isNaN(sumOfSquares([()=>{}])));
   });
 
-  it("returns NaN if any values are themselves NaN", () => {
+  it('returns NaN if any values are themselves NaN', () => {
     assert(Number.isNaN(sumOfSquares([NaN])));
     assert(Number.isNaN(sumOfSquares([0,1,0/0,2])));
   });
 
-  it("throws TypeError if argument is not iterable", () => {
+  it('throws TypeError if argument is not iterable', () => {
     assert.throws(() => sumOfSquares(), TypeError);
     assert.throws(() => sumOfSquares(null), TypeError);
     assert.throws(() => sumOfSquares(true), TypeError);
