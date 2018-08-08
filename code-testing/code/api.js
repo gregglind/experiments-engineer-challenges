@@ -1,10 +1,27 @@
+// Part 1:  sumOfSquares
 
-
-// Part 1:  foo
-function foo(a) {
-  a = a || [];
-  var b = a.map(function(el) { return el * el });
-  return b.reduce(function(s, el) { return s + el }, 0);
+/**
+ * Compute and return the sum of the squares of a iterable sequence of numbers.
+ *
+ * @param {Iterable} numbers - an iterable object whose iterator returns
+ *     a sequence of zero or more numbers.
+ *
+ * @returns {number} the sum of the squares of the specified numbers.
+ *   Returns 0 if the iterator is empty (such as an array of length 0).
+ *   Returns NaN if any element of numbers is not a number or is the NaN
+ *   value itself.
+ *
+ * @throws {TypeError} if numbers is omitted or is not iterable
+ */
+function sumOfSquares(numbers) {
+  let sum = 0;
+  for (let x of numbers) {
+    if (typeof x !== 'number') {
+      return NaN;
+    }
+    sum += x * x;
+  }
+  return sum;
 }
 
 
@@ -34,7 +51,7 @@ async function openUrlsInOrder (urlsArray) {
 
 module.exports = {
   openUrlsInOrder,
-  foo
+  sumOfSquares
 }
 
 
