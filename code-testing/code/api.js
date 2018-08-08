@@ -18,16 +18,19 @@ async function fakeOpenUrl (url, loadingTime=3*Math.random()) {
   return waitFor(loadingTime).then(()=>console.log(`${url} opened after ${loadingTime}`));
 }
 
-/** opensTabsInOrder
-  *
-  * @returns workDo
-  */
-async function openUrlsInOrder (urlsArray) {
+/**
+ * Simulate opening an array of URLs sequentially, but asynchronously.
+ *
+ * @param {Array<string>} - an array (or iterable) of URLs
+ * @returns {Array<Array<string>>} - a data structure representing the
+ *   simulated loading of the URLs.
+ */
+async function openUrlsInOrder(urlsArray) {
   const work = [];
-  urlsArray.forEach(async (url) => {
+  for(let url of urlsArray) {
     await fakeOpenUrl(url);
     work.push(['url',url]);
-  })
+  }
   work.push(['done',true]);
   return work;
 }
@@ -35,6 +38,6 @@ async function openUrlsInOrder (urlsArray) {
 module.exports = {
   openUrlsInOrder,
   foo
-}
+};
 
 
