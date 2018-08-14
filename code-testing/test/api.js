@@ -1,19 +1,46 @@
 // assert is like assert, but with some extra functions.
 const assert = require("assert");
 const {
-  foo,
+  sumOfSquares,
   openUrlsInOrder
 } = require('../code/api.js');
 
 
 // part 1: foo
-describe('foo()', function () {
-  it("should do something", function () {
-    assert(false, "foo has no real tests");
-  })
-  it("should do something else", function () {
-    assert(false, "foo has no real tests");
-  })
+describe('sumOfSquares()', function () {
+  describe('when valid input', function() {
+      it("should return sum of squares", function () {
+          assert(sumOfSquares([1, 2, 3]) === 14, 'Incorrect result');
+      });
+
+      describe('when empty array', function() {
+        it('should return 0', function() {
+          assert(sumOfSquares([]) === 0, 'incorrect result')
+        });
+      });
+
+      describe('when non-array input', function() {
+        it('should return 0', function() {
+          assert(sumOfSquares() === 0, 'incorrect result')
+          assert(sumOfSquares('') === 0, 'incorrect result')
+          assert(sumOfSquares(0) === 0, 'incorrect result')
+          assert(sumOfSquares({}) === 0, 'incorrect result')
+        });
+      });
+  });
+
+  describe('when invalid input', function() {
+    it("should throw error", function () {
+      try {
+        sumOfSquares([1, 2, 3, 'chirag', 4])
+      } catch (e) {
+        assert(true)
+        return
+      }
+      assert(false, 'did not throw error')
+    });
+  });
+
 });
 
 
