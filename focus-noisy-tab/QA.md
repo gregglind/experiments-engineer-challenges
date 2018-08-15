@@ -22,7 +22,7 @@ web-ext run
 - Open new tab.
 
 #### action
-- click Focus Tab Button
+- click "Focus Noisy Tab" BrowserAction Button
 
 #### expect
 - the `youtube` tab steals focus.

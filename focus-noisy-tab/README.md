@@ -23,5 +23,5 @@ Improve the Firefox browser extension that focuses a noisy tab.
 
     - Augments the [Functional Specification](./SPEC.md) to clarify addition questions and behaviours
     - Improves the [Manual QA Plan](QA.md) to handle more edge cases.
-    - Either in code, or in a file `Remarks.md`, comment on what could be improved / changed / expanded / imrproved.  (For inspriation, look at other methods on [`browserAction`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction), and think of how they might improve the UI.
+    - Either in code, or in a file `Remarks.md`, comment on what could be improved / changed / expanded.  (For inspriation, look at other methods on [`browserAction`](https://developer.mozilla.org/en-US/docs/Mozilla/Add-ons/WebExtensions/API/browserAction), and think of how they might improve the UI.
 
