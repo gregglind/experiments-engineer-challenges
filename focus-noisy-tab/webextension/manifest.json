@@ -6,8 +6,9 @@
     "scripts": ["background.js"]
   },
   "browser_action": {
+    "browser_style": true,
     "default_icon": {
-      "16": "icons/Audio Mute.svg"
+      "16": "icons/Audio.svg"
     },
     "default_title": "Focus Noisy Tab"
   },
