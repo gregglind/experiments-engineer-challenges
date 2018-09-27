@@ -1,40 +1,49 @@
+/**
+ * Simple helper function for reducing an array of numbers
+ * by summing the squares of each element in the array.
+ *
+ * @param {Array<Number>} the numbers to sum as squares
+ */
+function sumAsSquares(input=[]) {
+  if (input.length===0) return 0;
 
-
-// Part 1:  foo
-function foo(a) {
-  a = a || [];
-  var b = a.map(function(el) { return el * el });
-  return b.reduce(function(s, el) { return s + el }, 0);
+  // We could use a filter(nan).map(square).reduce,
+  // but as per https://jsperf.com/chained-vs-looped
+  // using a straight loop is much faster.
+  let sum = 0;
+  input.forEach(v => {
+    v = parseFloat(v)**2;
+    if (isNaN(v)) return;
+    sum += v;
+  });
+  return sum;
 }
 
 
-// Part 2:  openTabsInOrder
+const asyncDelay = (ms) => new Promise(r => setTimeout(r, ms));
 
-// promised timeout.
-const waitFor = (ms) => new Promise(r=>setTimeout(r,ms));
-
-// Simulate a tabOpening with random loading time.
-async function fakeOpenUrl (url, loadingTime=3*Math.random()) {
-  return waitFor(loadingTime).then(()=>console.log(`${url} opened after ${loadingTime}`));
+async function fakeOpenUrl(url, delay=Math.random()*100) {
+  await asyncDelay(delay);
+  return ["url", url];
 }
 
-/** opensTabsInOrder
-  *
-  * @returns workDo
-  */
+/**
+ * Opens an array of URLs, loading one URL at a time
+ * @returns workDo
+ */
 async function openUrlsInOrder (urlsArray) {
   const work = [];
-  urlsArray.forEach(async (url) => {
-    await fakeOpenUrl(url);
-    work.push(['url',url]);
-  })
+  for (const url of urlsArray) {
+    const status = await fakeOpenUrl(url);;
+    work.push(status);
+  }
   work.push(['done',true]);
   return work;
 }
 
 module.exports = {
-  openUrlsInOrder,
-  foo
+  sumAsSquares,
+  openUrlsInOrder
 }
 
 
