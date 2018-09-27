@@ -6,20 +6,32 @@ const {
 
 
 describe('sumAsSquares()', function () {
-  it("should accept no parameters, yielding 0", function () {
-    assert(sumAsSquares() === 0, "function works with undefined input");
+  it("should accept falsey parameters, yielding 0", function () {
+    assert(sumAsSquares() === 0);
+  })
+  it("should accept falsey parameters, yielding 0", function () {
+    assert(sumAsSquares(false) === 0);
   })
   it("should accept an empty array, yielding 0", function () {
-    assert(sumAsSquares([]) === 0, "function works for empty array");
+    assert(sumAsSquares([]) === 0);
   })
   it("should accept an array of integers", function () {
-    assert(sumAsSquares([1,2]) === 5, "function sums int terms correctly");
+    assert(sumAsSquares([1,2]) === 5);
   })
   it("should accept an array of floats", function () {
-    assert(sumAsSquares([1.5,2.5]) === 8.5, "function sums float terms correctly");
+    assert(sumAsSquares([1.5,2.5]) === 8.5);
   })
   it("should filter out non-numbers", function () {
-    assert(sumAsSquares(['a', 'b', {}, [], ()=>{}, 1]) === 1, "function filters out non-numbers");
+    assert(sumAsSquares(['a', 'b', {}, [], ()=>{}, 1]) === 1);
+  })
+  it("should treat non-array input as undefined input: object", function () {
+    assert(sumAsSquares({}) === 0);
+  })
+  it("should treat non-array input as undefined input: function", function () {
+    assert(sumAsSquares(() => {}) === 0);
+  })
+  it("should not allow multiple plain numbers instead of array", function () {
+    assert(sumAsSquares(1, 2,3) === 0);
   })
 });
 

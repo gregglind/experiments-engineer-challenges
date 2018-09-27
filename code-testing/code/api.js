@@ -2,10 +2,14 @@
  * Simple helper function for reducing an array of numbers
  * by summing the squares of each element in the array.
  *
- * @param {Array<Number>} the numbers to sum as squares
+ * Note: this function does not take multiple plain numbers as input.
+ *
+ * @param {Array<Number>} the numbers to sum as squares as array.
  */
 function sumAsSquares(input=[]) {
   if (input.length===0) return 0;
+
+  if (!(input instanceof Array)) return 0;
 
   // We could use a filter(nan).map(square).reduce,
   // but as per https://jsperf.com/chained-vs-looped
