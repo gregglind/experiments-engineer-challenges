@@ -13,7 +13,7 @@ function sumAsSquares(input=[]) {
 
   // We could use a filter(nan).map(square).reduce,
   // but as per https://jsperf.com/chained-vs-looped
-  // using a straight loop is much faster.
+  // using a straight loop is faster.
   let sum = 0;
   input.forEach(v => {
     v = parseFloat(v)**2;
