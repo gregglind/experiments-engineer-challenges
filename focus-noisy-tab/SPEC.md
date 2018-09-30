@@ -4,10 +4,19 @@ Using the assets suggested below in the “Assets” section, implement a [`Brow
 
 - When the user clicks on the `BrowserAction` button,
 
-  - If there is a tab playing audio,
-    **Focus that tab** (bring it to the foreground)
+  - If there are any tabs playing audio ("noisy tabs"),
+    - If the **first** (leftmost) noisy tab is not already focused,
+      **Focus that tab** (bring it to the foreground)
+    - If the **first** (leftmost) noisy tab is **already focused**,
+      noop (do nothing) _(current behavior calls .focus on the already focused tab, which is functionally the same but a superfluous call)_
+  - If there are no tabs playing audio,
+    noop (do nothing)
 
 - Use the `recordData` function in places where recording data would help the Product manager to make choices about the feature or understand if the feature is successful.
+
+## Definitions
+
+* Noisy Tab : a tab that has audio playing, i.e. a tab included in the results of `browser.tabs.query({"audible": true});`. NB: a tab continues to be considered "Noisy" for a few seconds after audio playback is stopped.
 
 ## Assets
 
