@@ -64,15 +64,14 @@ async function fakeOpenUrl (url, loadingTime=3*Math.random()) {
 }
 
 /** opensTabsInOrder
-  *
-  * @returns workDo
+  * @param {String[]} urlsArray array of urls to open
+  * @returns {Array[]} tuples of [type,value] where type is 'url' or 'done'
+  * @TODO this does not actually open the URLs in order, it just produces ordered results
   */
 async function openUrlsInOrder (urlsArray) {
-  const work = [];
-  urlsArray.forEach(async (url) => {
+  return await Promise.all(urlsArray.map(async (url) => {
     await fakeOpenUrl(url);
-    work.push(['url',url]);
-  })
-  work.push(['done',true]);
-  return work;
+    return ['url',url];
+  }))
+  .then(results => results.concat([['done',true]]));
 }

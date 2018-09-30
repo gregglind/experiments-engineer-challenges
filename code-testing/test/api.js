@@ -78,7 +78,7 @@ describe('sumOfSquares()', function () {
 
 
 // part 2:  openUrlsInOrder
-xdescribe('openUrlsInOrder()', function () {
+describe('openUrlsInOrder()', function () {
   it('should open urls in order', async function () {
 
     const urls = ['url1', 'url2', 'url3', 'url4']
