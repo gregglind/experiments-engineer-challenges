@@ -63,15 +63,28 @@ async function fakeOpenUrl (url, loadingTime=3*Math.random()) {
   return waitFor(loadingTime).then(()=>console.log(`${url} opened after ${loadingTime}`));
 }
 
-/** opensTabsInOrder
+/**
+ * Lazily opens urls one by one
+ * @param {String[]} urls array of urls to open
+ * @yields {String[]} tuple of ['url',<url>]
+ */
+async function* openUrls(urls){
+  for(const url of urls){
+    await fakeOpenUrl(url);
+    yield ['url', url];
+  }
+}
+
+/** 
+  * opens urls, 1 by 1, then returns list of "finished jobs"
   * @param {String[]} urlsArray array of urls to open
   * @returns {Array[]} tuples of [type,value] where type is 'url' or 'done'
-  * @TODO this does not actually open the URLs in order, it just produces ordered results
   */
 async function openUrlsInOrder (urlsArray) {
-  return await Promise.all(urlsArray.map(async (url) => {
-    await fakeOpenUrl(url);
-    return ['url',url];
-  }))
-  .then(results => results.concat([['done',true]]));
+  const results = [];
+  for await(const result of openUrls(urlsArray)){
+    results.push(result);
+  }
+  results.push(['done',true]);
+  return results;
 }
